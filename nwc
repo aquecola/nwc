@@ -1,0 +1,57 @@
+#!/bin/bash
+
+
+function init {
+
+	echo -n "What do you need?"[[A]nalyze/[C]onnect]:
+	read answer
+	case $answer in
+		[Aa] )
+			analyze
+		;;
+		[Cc] )
+			connect
+		;;
+	*) echo "Enter [A]nalyze or [C]onnect"
+	;;
+	esac
+
+	end
+
+}
+
+function connect {
+    
+    read -p "Type SSID:" ssid
+	read -s -p "Type password: " pass
+	
+	nmcli dev wifi connect "$ssid" password "$pass"
+	
+	end
+	
+}
+
+function analyze {
+    
+	nmcli dev wifi list
+}
+
+function end {
+    
+	echo -n "End Program?"[[Y]es/[N]o]:
+	read answer
+	case $answer in
+		[Yy] | [Yy][Ee][Ss] )
+			echo "Exit"
+			exit 1
+		;;
+		[Cc] | [Cc][Oo] )
+			init
+		;;
+	*) echo "Enter A[nalyze] or [C]onnect" 
+	;;
+	esac
+	
+}
+
+init
