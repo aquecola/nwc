@@ -48,7 +48,7 @@ function end {
 		[Cc] | [Cc][Oo] )
 			init
 		;;
-	*) echo "Enter A[nalyze] or [C]onnect" 
+	*) echo "Enter [Y]es or [N]o" 
 	;;
 	esac
 	
